@@ -14,6 +14,8 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class ProductController {
+
+    private static final Long EMPTY_ID = null;
     private final ProductServicePort productServicePort;
 
     @GetMapping("/products")
@@ -24,6 +26,6 @@ public class ProductController {
     @PostMapping("/products")
     public Product addProduct(@RequestBody ProductDto productDto) {
         return productServicePort.addProduct(
-                new Product(productDto.getName(), productDto.getDescription()));
+                new Product(EMPTY_ID,productDto.getName(), productDto.getDescription()));
     }
 }
